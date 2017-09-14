@@ -1,0 +1,113 @@
+/*
+Theme Name: Fomater
+Description: Theme enfant de Benoit WPServeur
+Author: epointal
+Author URI: http://elisabeth.pointal.org
+Template: aeris-wordpress-theme 
+Version: 0.1.0
+*/
+//** global ( voir style.css ligne 468 ) **/
+button, input[type="button"], input[type="reset"], input[type="submit"]{
+  font-size:1rem;
+  line-height: 1.7;
+}
+/*
+CSS FORMATER
+*/
+/** color of link */
+
+a:hover, a:focus, a:active {
+    color: #8c0209;
+}
+/**
+* link list in widget side */
+
+
+.widget-area li a:hover,
+.widget-area p.tribe-events-widget-link a:hover{
+   padding-left:10px;
+   transition: padding-left .3s ease-out;
+}
+
+.widget-area li > a{
+  text-decoration: none;
+  color: #754a15;
+  display:table;
+}
+.widget-area li > a:before{
+   content: "\2192";
+   padding: 0 5px;
+   display:table-cell;
+}
+.widget-area li > a:hover{
+   color: #8c0209;
+}
+/** button **/
+input[type="submit"] {
+  display: inline-block;
+  margin: 0px 7px 3px 0;
+  padding: 3px 12px;
+  white-space: normal;
+  text-align: center;
+  background: #DD9946;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #e5b171 #cb8025 #cb8025;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px #a0651d, 1px 0 1px #cb8025, 0 1px 1px #cb8025, -1px 0 1px #a0651d;
+  vertical-align: top;
+  cursor: pointer;
+  pointer-events: auto;
+  box-sizing: border-box;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+input[type="submit"]:hover {
+  background: #f39b30;
+  border-color: #e5b171 #cb8025 #cb8025;
+} 
+
+/** evens calendar **/
+/** change the blue background **/
+#tribe-events-content table.tribe-events-calendar .type-tribe_events.tribe-event-featured,
+.tribe-events-list-widget .tribe-event-featured,
+#tribe-events .tribe-events-button, #tribe-events .tribe-events-button:hover, 
+#tribe_events_filters_wrapper input[type="submit"], 
+.tribe-events-button, .tribe-events-button.tribe-active:hover, 
+.tribe-events-button.tribe-inactive, .tribe-events-button:hover, 
+.tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"],
+.tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"] > a ,
+.tag a{
+   background:#8c0209;
+}
+/** custom event calendar for differents events categories*/
+table.tribe-events-calendar .tribe_events{
+  background:#DD9946;
+}
+table.tribe-events-calendar .tribe-events-category-manifestation{
+  background:#C77035;
+}
+table.tribe-events-calendar .tribe-events-category-workshop{
+  background:#B14725;
+}
+table.tribe-events-calendar .tribe-events-category-colloque,
+table.tribe-events-calendar .tribe-events-category-seminar{
+  background:#9B1D14;
+}
+
+table.tribe-events-calendar .tribe_events a{
+   color:#fff;
+}
+li.tribe-events-list-widget-events{
+	text-align:center;
+	background:#8c0209;
+	color:#fff;
+}
+li.tribe-events-list-widget-events a,
+li.tribe-events-list-widget-events a:hover,
+li.tribe-events-list-widget-events a:focus,
+li.tribe-events-list-widget-events a:active{
+ 	font-size:1.2rem;
+	color:#fff;
+}
