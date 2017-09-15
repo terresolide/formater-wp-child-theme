@@ -1,0 +1,30 @@
+{
+  "name": "aeris-wp-theme-formater",
+  "version": "0.1.0",
+  "description": "Child Theme  for ForM@Ter site",
+  "main": "index.js",
+  "scripts": {
+    "test": "default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epointal/aeris-wp-theme-formater.git"
+  },
+  "keywords": [
+    "aeris",
+    "formater",
+    "theme",
+    "wordpress",
+    "child"
+  ],
+  "author": "epointal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epointal/aeris-wp-theme-formater/issues"
+  },
+  "homepage": "https://github.com/epointal/aeris-wp-theme-formater#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2"
+  }
+}
