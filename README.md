@@ -1,2 +1,2 @@
-# aeris-wp-theme-formater
-Aeris-wordpress-theme Child Theme for ForM@Ter
+# formater-wp-child-theme-for-aeris
+Child theme for [Aeris Wordpress Theme](https://github.com/aeris-data/aeris-wordpress-theme)
