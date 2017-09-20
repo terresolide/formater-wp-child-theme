@@ -45,6 +45,10 @@ add_shortcode("include-svg", "include_file_svg");
 
 function include_file_svg( $attrs, $html='' ){
 	$url = $attrs["src"];
-	$content = file_get_contents($url);
-	return $content;
+	$svg = file_get_contents($url);
+	if( $svg === false){
+		return "";
+	}else{
+		return $svg;
+	}
 }
