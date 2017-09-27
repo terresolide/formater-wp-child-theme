@@ -16,7 +16,7 @@ function theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'formater_register_script' );
 function formater_register_script(){
-	wp_register_script('pdf_vjs', "http://localhost/poleter/dist/formater-pdf-viewer-vjs_0.1.0.js", Array(), null, true);
+	wp_register_script('pdf_vjs', "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/26490fc7/dist/formater-pdf-viewer-vjs_0.1.1.js", Array(), null, true);
 }
 
 // Add svg and xml as a supported upload type to Media Gallery
@@ -84,11 +84,14 @@ add_shortcode("embed-pdf", "embed_pdf");
 
 function embed_pdf( $attrs, $html='' ){
 	global $_formater_count;
+	$url = $attrs["src"];
+       
 	if( $_formater_count == 0){
 		wp_enqueue_script('pdf_vjs');
 		$_formater_count++;
 	}
-	$url = $attrs["src"];
-	echo '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
+
+	return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
+      
 	
 }
