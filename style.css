@@ -4,7 +4,9 @@ Description: Theme enfant de Benoit WPServeur
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.1.1
+Version: 0.1.2
+GitHub Theme URI: epointal/formater-wp-child-theme-for-aeris
+GitHub Branch: master
 */
 //** global ( voir style.css ligne 468 ) **/
 button, input[type="button"], input[type="reset"], input[type="submit"]{
