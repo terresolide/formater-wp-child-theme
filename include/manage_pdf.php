@@ -39,5 +39,6 @@ function embed_pdf( $attrs, $html='' ){
 	}
 	
 	return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
+// <script type="text/javascript" component="epointal/formater-pdf-viewer-vjs@latest" src="https://rawgit.com/aeris-data/aeris-component-loader/master/aerisComponentLoader.js" ></script>';
 	
 }	
