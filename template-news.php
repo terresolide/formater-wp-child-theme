@@ -26,7 +26,7 @@ get_header(); ?>
 			<?php
 			global $post;
 			$argsListPost = array(
-					'posts_per_page'   => 9,
+					'posts_per_page'   => get_option('posts_per_page'),
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => '',
@@ -45,6 +45,9 @@ get_header(); ?>
 					'suppress_filters' => true
 			);
 			
+			if(current_user_can('read_private_posts')){
+				$argsListPost['post_status'] = array('publish', 'private');
+			}
 			$postsList = get_posts ($argsListPost);
 			
 			foreach ($postsList as $post) :

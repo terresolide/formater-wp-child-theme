@@ -63,7 +63,7 @@ while ( have_posts() ) : the_post();
                 // list_pages($argsListPost, false);
 				global $post;
 				$argsListPost = array(
-					'posts_per_page'   => get_option('posts_per_page'),
+					'posts_per_page'   => get_option('posts_per_page') - 3,
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => '',
@@ -82,6 +82,9 @@ while ( have_posts() ) : the_post();
 					'suppress_filters' => true 
 				);
 
+				if(current_user_can('read_private_posts')){
+					$argsListPost['post_status'] = array('publish', 'private');
+				}
 				$postsList = get_posts ($argsListPost);
 
 				foreach ($postsList as $post) :
