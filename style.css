@@ -18,8 +18,14 @@ CSS FORMATER
 */
 /** color of link */
 
-a:hover, a:focus, a:active {
+a:hover, a:focus, a:active,
+main a:hover, main a:focus, main a:active{
     color: #8c0209;
+}
+
+.post-excerpt,
+.post-excerpt p{
+	line-height:1.3;
 }
 /**
 * link list in widget side */
@@ -41,9 +47,20 @@ a:hover, a:focus, a:active {
    padding: 0 5px;
    display:table-cell;
 }
-.widget-area li > a:hover{
+.widget-area li > a.widget_sp_image-image-link:before{
+	content:none;
+	padding:0;
+}
+.widget-area li > a:hover,
+.widget-area li > a:focus,
+.widget-area li > a:active,
+p.tribe-events-widget-link a:hover,
+p.tribe-events-widget-link a:active,
+p.tribe-events-widget-link a:focus,
+.recentcomments a:hover{
    color: #8c0209;
 }
+
 /** button **/
 input[type="submit"] {
   display: inline-block;
@@ -55,6 +72,8 @@ input[type="submit"] {
   border-width: 1px;
   border-style: solid;
   border-radius: 3px;
+  font-size: 16px;
+  line-height:1.7;
   border-color: #e5b171 #cb8025 #cb8025;
   color: #fff;
   text-decoration: none;
@@ -83,6 +102,7 @@ input[type="submit"]:hover {
 .tag a{
    background:#8c0209;
 }
+
 /** custom event calendar for differents events categories*/
 table.tribe-events-calendar .tribe_events{
   background:#DD9946;
@@ -98,7 +118,8 @@ table.tribe-events-calendar .tribe-events-category-seminar{
   background:#9B1D14;
 }
 
-table.tribe-events-calendar .tribe_events a{
+table.tribe-events-calendar .tribe_events a,
+#tribe-events-content table.tribe-events-calendar .tribe_events a{
    color:#fff;
 }
 li.tribe-events-list-widget-events{
@@ -112,4 +133,8 @@ li.tribe-events-list-widget-events a:focus,
 li.tribe-events-list-widget-events a:active{
  	font-size:1.2rem;
 	color:#fff;
+}
+
+#tribe-events-content .tribe-events-tooltip h4.entry-title{
+	color: #dd9946
 }
