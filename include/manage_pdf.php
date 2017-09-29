@@ -5,14 +5,21 @@
  */
 
 $_formater_pdf_count = 0;
-$_formater_pdf_viewer_version = '0.1.1';
+if(WP_DEBUG){
+	$_formater_pdf_viewer_version = '0.1.1';
+	$_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_".
+			                 $_formater_pdf_viewer_version.".js";
+}else{
+	$_formater_pdf_viewer_version = '0.1.2';
+	$_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
+	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
+	
+}
 add_action( 'wp_enqueue_scripts', 'formater_register_script' );
 
 function formater_register_script(){
-	global $_formater_pdf_viewer_version;
-	$url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
-	$url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
-	wp_register_script('pdf_vjs', $url , Array(), null, true);
+	global $_formater_pdf_plugin_url;
+	wp_register_script('pdf_vjs', $_formater_pdf_plugin_url, Array(), null, true);
 	
 }
 
