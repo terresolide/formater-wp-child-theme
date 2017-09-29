@@ -14,9 +14,12 @@ function theme_enqueue_styles() {
  	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 
-add_action( 'pre_get_posts', 'wpdf_mod_status', 1 );
+if(!is_admin()){
+	//bug with media manager in backend
+	add_action( 'pre_get_posts', 'wpdf_mod_status', 1 );
+}
 
-//add private page in query for authenticated user
+//add private page in query for authenticated usergit
 function wpdf_mod_status( $query ) {
 	if(current_user_can('read_private_posts')){
 		$query->set('post_status', array('publish', 'private'));

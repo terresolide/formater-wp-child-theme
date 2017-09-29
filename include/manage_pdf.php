@@ -5,17 +5,23 @@
  */
 
 $_formater_pdf_count = 0;
+
+/** @todo integration formater-pdf-viewer-vjs webcomponent 
+ * trouble with assets url
+
 if(WP_DEBUG){
 	$_formater_pdf_viewer_version = '0.1.1';
+//$_formater_pdf_plugin_url = "http://localhost/dist/formater-pdf-viewer-vjs_".
+			      //           $_formater_pdf_viewer_version.".js";
 	$_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_".
-			                 $_formater_pdf_viewer_version.".js";
+		                 $_formater_pdf_viewer_version.".js";
 }else{
 	$_formater_pdf_viewer_version = '0.1.2';
 	$_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
 	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
 	
-}
-add_action( 'wp_enqueue_scripts', 'formater_register_script' );
+} */
+// add_action( 'wp_enqueue_scripts', 'formater_register_script' );
 
 function formater_register_script(){
 	global $_formater_pdf_plugin_url;
@@ -30,8 +36,12 @@ function pdf_media_send_to_editor($html, $id, $attachment)
 {
 	
 	if (isset($attachment['url']) && preg_match( "/\.pdf$/i", $attachment['url'])) {
+		$title = $attachment['post_title'];
 		
-		$filter = '[embed-pdf src=' . $attachment['url'] .' ]';
+		$filter = '[embed-pdf src=' . $attachment['url'] .' ]'. $title.'[/embed-pdf]';
+		//foreach($attachment as $key=>$value){
+		//	$filter .= $key.' ='.$value.'<br />';
+		//}
 		return apply_filters('pdf_override_send_to_editor',  $filter , $html, $id, $attachment);
 	}else{
 		return $html;
@@ -41,18 +51,19 @@ function pdf_media_send_to_editor($html, $id, $attachment)
 add_shortcode("embed-pdf", "embed_pdf");
 
 function embed_pdf( $attrs, $html='' ){
-	global $_formater_pdf_count, $_formater_pdf_viewer_version;
+	global $_formater_pdf_count;
 	$url = $attrs["src"];
-	
+	//var_dump($attrs);
+
 	if( $_formater_pdf_count == 0){
 		wp_enqueue_script('pdf_vjs');
 		$_formater_pdf_count++;
 	}
-	//$url_js = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
-	//$url_js .= "/dist/formater-pdf_viewer-vjs_". $_formater_pdf_viewer_version.".js";
-	
-	return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
-   //  <script type="text/javascript" src="'.$url_js.'" ></script>';
-// script type="text/javascript" component="epointal/formater-pdf-viewer-vjs@latest" src="https://rawgit.com/aeris-data/aeris-component-loader/master/aerisComponentLoader.js" ></script>';
+
+	return '<p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a chref="'. $url.'">'.$html.'</a></p>';
+
+	/// @todo when formater-pdf-viewer integration pk
+	// return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
+   
 	
 }	
