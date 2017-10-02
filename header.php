@@ -45,7 +45,7 @@
 				
 				<nav id="top-header-menu" role="navigation" aria-label="Menu secondaire / Second menu">
 
-					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_id' => 'header-menu' )); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_id' => 'header-menu' ,  'walker' => new Custom_Walker_Nav_Menu() )); ?>
 				</nav>
 			</div>
 			

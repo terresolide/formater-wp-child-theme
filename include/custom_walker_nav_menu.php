@@ -13,7 +13,10 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
 
   	//on n'ajoute rien si l'utilisateur n'est pas autorisée à lire les pages privées 
   	//et que le lien est vers une page privée
-  	if(!current_user_can('read_private_posts') && get_post_status($item->object_id)=== "private"){
+ 
+  	
+ 
+  	if(!current_user_can('read_private_posts') && (in_array( "private", $item->classes) || get_post_status($item->object_id)=== "private")){
   		return;
   	}
   	parent::start_el($output, $item, $depth , $args , $id);
@@ -26,7 +29,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
  
     //on n'ajoute rien si l'utilisateur n'est pas autorisée à lire les pages privées
   	//et que le lien est vers une page privée
-  	if(!current_user_can('read_private_posts') && get_post_status($item->object_id)=== "private"){
+  	if(!current_user_can('read_private_posts') && (get_post_status($item->object_id)=== "private")){
   		return;
   	}
   	
