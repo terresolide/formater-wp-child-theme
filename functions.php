@@ -14,17 +14,23 @@ function theme_enqueue_styles() {
  	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 
-if(!is_admin()){
+if(!is_admin()  ){
 	//bug with media manager in backend
 	add_action( 'pre_get_posts', 'wpdf_mod_status', 1 );
 }
 
 //add private page in query for authenticated usergit
 function wpdf_mod_status( $query ) {
-	if(current_user_can('read_private_posts')){
-		$query->set('post_status', array('publish', 'private'));
+	if(current_user_can('read_private_posts') ){
+		
+		if($query->get('post_status') == "publish" ||
+				(is_array($query->get('post_status')) && in_array( 'publish', $query->get('post_status')))){
+			$query->set('post_status', array('publish', 'private'));
+		}
 	}
 }
+
+
 /** 
  * Manage pdf files  
  */

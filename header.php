@@ -28,7 +28,7 @@
 			// logo
 			$custom_logo_id = get_theme_mod( 'custom_logo' );
 			$image = wp_get_attachment_image_src( $custom_logo_id , 'full' ); 
-
+           
 			// Description (slogan)
 			$description = get_bloginfo( 'description', 'display' );
 
@@ -54,6 +54,7 @@
 
 <?php
 	// Breadcrumbs sans titre
+
 	if ( is_front_page() && is_home() ) { ?>
 	<div id="breadcrumbs">
 		<?php if (function_exists('the_breadcrumb')) the_breadcrumb(); ?>
