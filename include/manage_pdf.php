@@ -7,21 +7,21 @@
 $_formater_pdf_count = 0;
 
 /** @todo integration formater-pdf-viewer-vjs webcomponent 
- * trouble with assets url
+ * trouble with assets url*/
 
 if(WP_DEBUG){
-	$_formater_pdf_viewer_version = '0.1.1';
+	$_formater_pdf_viewer_version = '0.1.3';
 //$_formater_pdf_plugin_url = "http://localhost/dist/formater-pdf-viewer-vjs_".
 			      //           $_formater_pdf_viewer_version.".js";
 	$_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_".
 		                 $_formater_pdf_viewer_version.".js";
 }else{
-	$_formater_pdf_viewer_version = '0.1.2';
+	$_formater_pdf_viewer_version = '0.1.3';
 	$_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
 	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
 	
-} */
-// add_action( 'wp_enqueue_scripts', 'formater_register_script' );
+} 
+ add_action( 'wp_enqueue_scripts', 'formater_register_script' );
 
 function formater_register_script(){
 	global $_formater_pdf_plugin_url;
@@ -60,7 +60,9 @@ function embed_pdf( $attrs, $html='' ){
 		$_formater_pdf_count++;
 	}
 
-	return '<p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a chref="'. $url.'">'.$html.'</a></p>';
+    $lang = substr(get_locale(),0,2);
+	return '<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'"></formater-pdf-viewer>
+<p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a chref="'. $url.'">'.$html.'</a></p>';
 
 	/// @todo when formater-pdf-viewer integration pk
 	// return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
