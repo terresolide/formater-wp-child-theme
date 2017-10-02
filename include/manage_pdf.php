@@ -62,7 +62,7 @@ function embed_pdf( $attrs, $html='' ){
 
     $lang = substr(get_locale(),0,2);
 	return '<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'"></formater-pdf-viewer>
-<p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a chref="'. $url.'">'.$html.'</a></p>';
+<p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a href="'. $url.'">'.$html.'</a></p>';
 
 	/// @todo when formater-pdf-viewer integration pk
 	// return  '<formater-pdf-viewer src="' .$url. '"></formater-pdf-viewer>';
