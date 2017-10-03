@@ -23,6 +23,10 @@ main a:hover, main a:focus, main a:active{
     color: #8c0209;
 }
 
+svg a text:hover{
+    
+	transform: translateX(20px);
+}
 .post-excerpt,
 .post-excerpt p{
 	line-height:1.3;
