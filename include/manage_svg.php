@@ -28,7 +28,7 @@ function svg_media_send_to_editor($html, $id, $attachment)
 	
 	if (isset($attachment['url']) && preg_match( "/\.svg$/i", $attachment['url'])) {
 		
-		$filter = '[include-svg src=' . $attachment['url'] .' ]';
+		$filter = '[include-svg src=' . $attachment['url'] .' ][/include-svg]';
 		return apply_filters('svg_override_send_to_editor',  $filter , $html, $id, $attachment);
 	}else{
 		return $html;

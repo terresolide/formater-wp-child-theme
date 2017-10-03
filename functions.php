@@ -34,24 +34,24 @@ function wpdf_mod_status( $query ) {
 /** 
  * Manage pdf files  
  */
-require get_stylesheet_directory(). '/include/manage_pdf.php';
+require_once get_stylesheet_directory(). '/include/manage_pdf.php';
 
 /**
  * Manage svg files
  */
-require get_stylesheet_directory(). '/include/manage_svg.php';
+require_once get_stylesheet_directory(). '/include/manage_svg.php';
 
 /**
  * Private in menu
  */
-require get_stylesheet_directory(). '/include/private_item.php';
+require_once get_stylesheet_directory(). '/include/private_item.php';
 
 /**
  * Manage private/publish in widget custom menu
  *
  */
 
-require get_stylesheet_directory(). '/widget/Formater_Nav_Menu_Widget.php';
+require_once get_stylesheet_directory(). '/widget/Formater_Nav_Menu_Widget.php';
 function formater_init_menu_widget() {
 	register_widget('Formater_Nav_Menu_Widget');
 }
