@@ -4,7 +4,7 @@ Description: Aeris Child Theme
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.1.7
+Version: 0.1.8
 GitHub Theme URI: epointal/formater-wp-child-theme-for-aeris
 GitHub Branch: master
 */
@@ -141,4 +141,44 @@ li.tribe-events-list-widget-events a:active{
 
 #tribe-events-content .tribe-events-tooltip h4.entry-title{
 	color: #dd9946
+}
+
+/** css  pour les pavés de logo **/
+div.formater-partner
+{
+   text-align: center;
+   vertical-align:text-top;
+}
+div.formater-partner > div{
+  display: inline-block;
+  max-width:200px;
+  margin:3px;
+}
+div.formater-partner img{
+  width:100px;
+}
+div.formater-partner div.wp-caption{
+ min-height: 100px;
+ height: 100px;
+ display:block;
+}
+
+.fm-container{
+  display:table-cell;
+  vertical-align:top;
+}
+.fm-md-6{
+  width:45%;
+  display:inline-block;
+vertical-align:top;
+}
+@media screen and (max-width: 640px){
+.fm-container ul{
+   margin:0;
+}
+  .fm-md-6{
+		width:100%;
+        margin-left:0;
+       padding-left:0;
+  }
 }
