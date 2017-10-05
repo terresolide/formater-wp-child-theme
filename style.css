@@ -147,15 +147,20 @@ li.tribe-events-list-widget-events a:active{
 div.formater-partner
 {
    text-align: center;
-   vertical-align:text-top;
+   vertical-align:top;
 }
 div.formater-partner > div{
   display: inline-block;
   max-width:200px;
   margin:3px;
+  vertical-align:top;
 }
 div.formater-partner img{
   width:100px;
+}
+
+div.formater-partner p{
+	text-align:center;
 }
 div.formater-partner div.wp-caption{
  min-height: 100px;
