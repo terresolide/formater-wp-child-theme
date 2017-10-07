@@ -42,14 +42,18 @@
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'theme-aeris' ); ?></button>
 					<?php if (has_nav_menu('menu-1')) 
 					{
-					    wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' , 'walker' => new Custom_Walker_Nav_Menu() ) ); 
+					    wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' , 'walker' => new Custom_Walker_Nav_Menu( ) ) ); 
 					}?>
 				</nav>
 				
 				<nav id="top-header-menu" role="navigation" aria-label="Menu secondaire / Second menu">
-
-					<?php if (has_nav_menu('header-menu')) 
+					<?php
+					if( function_exists('mlp_show_linked_elements'))
 					{
+					           mlp_show_linked_elements();
+                    }
+                    if (has_nav_menu('header-menu'))
+                    {
 					    wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_id' => 'header-menu' ,  'walker' => new Custom_Walker_Nav_Menu() )); 
 					}?>
 				</nav>

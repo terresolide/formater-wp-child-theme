@@ -1,8 +1,9 @@
 
 <?php
-/**
-** ForM@Ter child theme of aeris-wordpress-theme
-**/
+/** 
+ * ForM@Ter child theme of aeris-wordpress-theme
+ * @author epointal
+ */
 
 
 
@@ -19,7 +20,7 @@ if(!is_admin()  ){
 	add_action( 'pre_get_posts', 'wpdf_mod_status', 1 );
 }
 
-//add private page in query for authenticated usergit
+//add private page in query for authenticated user
 function wpdf_mod_status( $query ) {
 	if(current_user_can('read_private_posts') ){
 		
@@ -30,7 +31,19 @@ function wpdf_mod_status( $query ) {
 	}
 }
 
+function add_last_nav_item($items, $args) {
+    // If this isn't the primary menu, do nothing
+   // var_dump($args->theme_location);
+    if( !($args->theme_location == 'header-menu') )
+        return $items;
+    
+   
+        return $items . '<li>' . get_search_form( false ) . '</li>';
+   // return $items;
+}
 
+
+add_filter( 'wp_nav_menu_items', 'add_last_nav_item', 10, 2 );
 /** 
  * Manage pdf files  
  */

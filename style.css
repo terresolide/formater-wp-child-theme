@@ -177,6 +177,32 @@ div.formater-partner div.wp-caption{
   display:inline-block;
 vertical-align:top;
 }
+
+/** multilingual press **/
+#top-header-menu div.mlp-language-box{
+	display: inline-block;
+}
+div.mlp-language-box + div.menu-header-menu-container{
+	display:inline-block;
+}
+div.mlp-language-box + div.menu-header-menu-container .menu{
+	margin-left:0;
+}
+
+/** seach form in menu */
+#top-header-menu .search-form input.search-submit{
+	display:none;
+}
+
+#top-header-menu .search-form{
+    margin-left:10px;
+}
+#top-header-menu .search-form input.search-field{
+	height:20px;
+	font-size:12px;
+	width:100px;
+	
+}
 @media screen and (max-width: 640px){
 .fm-container ul{
    margin:0;
