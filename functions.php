@@ -6,9 +6,6 @@
  */
 
 
-
-
-
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 function theme_enqueue_styles() {
@@ -52,7 +49,7 @@ require_once get_stylesheet_directory(). '/include/manage_pdf.php';
 /**
  * Manage svg files
  */
-//require_once get_stylesheet_directory(). '/include/manage_svg.php';
+require_once get_stylesheet_directory(). '/include/manage_svg.php';
 
 /**
  * Private in menu
