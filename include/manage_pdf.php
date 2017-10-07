@@ -21,12 +21,11 @@ if(WP_DEBUG){
 	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
 	
 } 
- add_action( 'wp_enqueue_scripts', 'formater_register_script' );
+ add_action( 'wp_enqueue_scripts', 'formater_register_pdf_script' );
 
-function formater_register_script(){
+function formater_register_pdf_script(){
 	global $_formater_pdf_plugin_url;
 	wp_register_script('pdf_vjs', $_formater_pdf_plugin_url, Array(), null, true);
-	
 }
 
 // Embed  pdf shortcode instead of link
@@ -61,7 +60,8 @@ function embed_pdf( $attrs, $html='' ){
 	}
 
     $lang = substr(get_locale(),0,2);
-	return '<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'"></formater-pdf-viewer>
+	return '<div style="clear:both;"></div>
+<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'"></formater-pdf-viewer>
 <p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a href="'. $url.'">'.$html.'</a></p>';
 
 	/// @todo when formater-pdf-viewer integration pk
