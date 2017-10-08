@@ -45,10 +45,13 @@ add_shortcode("formater-svg", "include_file_svg");
 function include_file_svg( $attrs, $html='' ){
    global $_formater_svg_count;
 	$url = $attrs["src"];
-	$svg = file_get_contents($url);
+	//$svg = file_get_contents($url);
+	$doc = new DOMDocument();
+	$doc->load($url);
+	$svg = $doc->getElementsByTagName('svg');
 	$content ='';
-	
-	if( $svg === false){
+
+	if( $svg->length == 0){
 		return "";
 	}else{
 	    if($_formater_svg_count == 0 ){
@@ -63,7 +66,7 @@ function include_file_svg( $attrs, $html='' ){
 	    }else{
 	        $content = '<div class="formater-svg">';
 	    }
-	    $content .= $svg.'</div>';
+	    $content .= $doc->saveHTML($svg->item(0)).'</div>';
 	    return $content;
 	}
 	

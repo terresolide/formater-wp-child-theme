@@ -56,13 +56,4 @@ require_once get_stylesheet_directory(). '/include/manage_svg.php';
  */
 require_once get_stylesheet_directory(). '/include/private_item.php';
 
-/**
- * Manage private/publish in widget custom menu
- *
- */
 
-require_once get_stylesheet_directory(). '/widget/Formater_Nav_Menu_Widget.php';
-function formater_init_menu_widget() {
-	register_widget('Formater_Nav_Menu_Widget');
-}
-add_action('widgets_init', 'formater_init_menu_widget');
