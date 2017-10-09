@@ -3,7 +3,9 @@
  * Manage svg files
  * @author epointal
  */
+// svg count in post/page
 $_formater_svg_count = 0;
+
 // Add svg and xml as a supported upload type to Media Gallery
 add_filter( 'upload_mimes', 'svg_upload_mimes');
 // Manage svg file : filter for svg in media gallery...
@@ -33,21 +35,32 @@ function svg_media_send_to_editor($html, $id, $attachment)
 		return $html;
 	}
 }
-
+// register svg script
 add_action( 'wp_enqueue_scripts', 'formater_register_svg_script' );
 
 function formater_register_svg_script(){
     wp_register_script('formater_svg', get_stylesheet_directory_uri() .'/js/manage-svg.js', Array(), null, true);
 }
+
 // include content  for svg file
 add_shortcode("formater-svg", "include_file_svg");
 
 function include_file_svg( $attrs, $html='' ){
-   global $_formater_svg_count;
+	global $_formater_svg_count;
+
+	$upload_info = wp_upload_dir();
+	$upload_dir = $upload_info['basedir'];
+	$upload_url = $upload_info['baseurl'];
+   
 	$url = $attrs["src"];
+	$path = realpath(str_replace($upload_url, $upload_dir, $url));
+	var_dump( $path);
 	//$svg = file_get_contents($url);
+	if(!file_exists( $path )){
+		return "";
+	}
 	$doc = new DOMDocument();
-	$doc->load($url);
+	$doc->load($path);
 	$svg = $doc->getElementsByTagName('svg');
 	$content ='';
 
@@ -70,13 +83,4 @@ function include_file_svg( $attrs, $html='' ){
 	    return $content;
 	}
 	
-}
-
-//add_action( 'wp_enqueue_scripts', 'formater_register_svg_script' );
-
-function formater_svg_add_script(){
-    
-    $data = 'var fm-left = 0;alert("coucou"); 
-function formater_switch_svg(';
-    wp_add_inline_script( 'custom-js', $data , 'before'); 
 }
