@@ -53,14 +53,14 @@ function include_file_svg( $attrs, $html='' ){
 	$upload_url = $upload_info['baseurl'];
    
 	$url = $attrs["src"];
+	// load by path instead url
 	$path = realpath(str_replace($upload_url, $upload_dir, $url));
-	var_dump( $path);
 	//$svg = file_get_contents($url);
 	if(!file_exists( $path )){
 		return "";
 	}
 	$doc = new DOMDocument();
-	$doc->load($path);
+	$doc->load( $path );
 	$svg = $doc->getElementsByTagName('svg');
 	$content ='';
 
