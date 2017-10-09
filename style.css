@@ -62,9 +62,9 @@ p.tribe-events-widget-link a:focus,
 }
 
 /** button **/
-button,
+button.menu-toggle,
 input[type="submit"] {
-  display: inline-block;
+
   margin: 0px 7px 3px 0;
   padding: 3px 12px;
   white-space: normal;
@@ -85,6 +85,10 @@ input[type="submit"] {
   box-sizing: border-box;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 }
+input[type="submit"]{
+	  display: inline-block;
+}
+
 input[type="submit"]:hover {
   background: #f39b30;
   border-color: #e5b171 #cb8025 #cb8025;
@@ -266,7 +270,7 @@ div.formater-svg div.fm-enlarge{
 
 	}
 	#primary-menu  ul.sub-menu{
-	   width:80%;
+	   width:95%;
 	   min-width:250px;
 	    float: none;
 	   position:relative;
@@ -331,4 +335,8 @@ div.formater-svg div.fm-enlarge{
         margin-left:0;
        padding-left:0;
   }
+  
+  .post-container {
+    width: 100%;
+}
 }
