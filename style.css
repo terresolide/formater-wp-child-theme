@@ -336,7 +336,15 @@ div.formater-svg div.fm-enlarge{
        padding-left:0;
   }
   
+  /* svg left and right*/
+  div.formater-svg.fm-left,
+  div.formater-svg.fm-right{
+	  width:100%;
+  }
+  div.formater-svg div.fm-enlarge{
+	  display:none;
+  }
   .post-container {
-    width: 100%;
-}
+		width: 100%;
+   }
 }
