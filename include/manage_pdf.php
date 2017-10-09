@@ -1,21 +1,38 @@
 <?php
 /**
  * Manage svg files
+ * use vuejs webcomponent formater-pdf-viewer-vjs
+ * @see https://github.com/epointal/formater-pdf-viewer-vjs
  * @author epointal
  */
 
 $_formater_pdf_count = 0;
 
-/** @todo integration formater-pdf-viewer-vjs webcomponent 
- * trouble with assets url*/
+/**
+ * Add pdf as a supported upload type to Media Gallery
+ */ 
+add_filter( 'upload_mimes', 'pdf_upload_mimes');
+
+function pdf_upload_mimes($existing_mimes = array())
+{
+	if(!isset($existing_mimes['pdf'])){
+		$existing_mimes['pdf'] = ' 	application/pdf';
+	}
+	return $existing_mimes;
+}
+
+/** 
+ * Register script webcomponent formater-pdf-viewer
+ *  */
+
 
 if(WP_DEBUG){
+	// use master version 
 	$_formater_pdf_viewer_version = '0.1.3';
-//$_formater_pdf_plugin_url = "http://localhost/dist/formater-pdf-viewer-vjs_".
-			      //           $_formater_pdf_viewer_version.".js";
 	$_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_".
 		                 $_formater_pdf_viewer_version.".js";
 }else{
+	// use last tag version
 	$_formater_pdf_viewer_version = '0.1.3';
 	$_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
 	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
@@ -28,7 +45,9 @@ function formater_register_pdf_script(){
 	wp_register_script('pdf_vjs', $_formater_pdf_plugin_url, Array(), null, true);
 }
 
-// Embed  pdf shortcode instead of link
+/**
+ * embed-pdf shortcode instead link when insert pdf in post
+ */
 add_filter( 'media_send_to_editor',  'pdf_media_send_to_editor' , 21, 3 );
 
 function pdf_media_send_to_editor($html, $id, $attachment)
@@ -47,6 +66,9 @@ function pdf_media_send_to_editor($html, $id, $attachment)
 	}
 }
 
+/**
+ * Add shortcode to write webcomponent <formater-pdf-viewer> instead [embed-pdf]
+ */
 add_shortcode("embed-pdf", "embed_pdf");
 
 function embed_pdf( $attrs, $html='' ){
@@ -55,6 +77,8 @@ function embed_pdf( $attrs, $html='' ){
 	//var_dump($attrs);
 
 	if( $_formater_pdf_count == 0){
+		// load script webcomponent formater-pdf-viewer-vjs
+		// only for the first component formater-pdf-viewer
 		wp_enqueue_script('pdf_vjs');
 		$_formater_pdf_count++;
 	}
