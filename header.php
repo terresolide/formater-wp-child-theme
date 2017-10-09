@@ -39,23 +39,28 @@
 			</a>
 			<div>
 				<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Menu principal / Main menu">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'theme-aeris' ); ?></button>
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><span class="fa fa-bars"></span></button>
 					<?php if (has_nav_menu('menu-1')) 
 					{
 					    wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' , 'walker' => new Custom_Walker_Nav_Menu( ) ) ); 
 					}?>
 				</nav>
-				
+	
 				<nav id="top-header-menu" role="navigation" aria-label="Menu secondaire / Second menu">
 					<?php
-					if( function_exists('mlp_show_linked_elements'))
-					{
-					           mlp_show_linked_elements();
-                    }
                     if (has_nav_menu('header-menu'))
                     {
 					    wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_id' => 'header-menu' ,  'walker' => new Custom_Walker_Nav_Menu() )); 
-					}?>
+					}
+					if( function_exists('mlp_show_linked_elements'))
+					{
+						mlp_show_linked_elements();
+					}else{?>
+					 <div class="mlp-language-box mlp_language_box">
+					 <ul><li>
+					 <a rel="alternate" hreflang="en-US" href="https://www7.obs-mip.fr/formater-en/?noredirect=en_US">ForM@Ter EN</a>
+					 </li></ul></div>
+					<?php }?>
 				</nav>
 			</div>
 			

@@ -62,6 +62,7 @@ p.tribe-events-widget-link a:focus,
 }
 
 /** button **/
+button,
 input[type="submit"] {
   display: inline-block;
   margin: 0px 7px 3px 0;
@@ -177,14 +178,25 @@ vertical-align:top;
 /** multilingual press **/
 #top-header-menu div.mlp-language-box{
 	display: inline-block;
+	float:right;
 }
-div.mlp-language-box + div.menu-header-menu-container{
+div.menu-header-menu-container{
 	display:inline-block;
+	float:right;
 }
-div.mlp-language-box + div.menu-header-menu-container .menu{
+ div.menu-header-menu-container .menu{
 	margin-left:0;
+	float:right;
 }
+	#top-header-menu div.mlp-language-box ul{
+	  margin:0;
+	  padding:0;
+	  
+	}
+	#top-header-menu div.mlp-language-box ul li{
 
+	   margin:0;
+	}
 /** seach form in menu */
 #top-header-menu .search-form input.search-submit{
 	display:none;
@@ -239,10 +251,82 @@ div.formater-svg div.fm-enlarge{
     border-radius:2px;
     cursor:pointer;}
 @media screen and (max-width: 640px){
-.fm-container ul{
-   margin:0;
-}
-  .fm-md-6{
+	/** menu */
+	header div.wrapper{
+	    text-align:center;
+	}
+	header div.wrapper > div {
+	    width:100%;
+	}
+	button.menu-toggle{
+	    margin:auto;
+	}
+	header div.wrapper li{
+		float:none;
+
+	}
+	#primary-menu  ul.sub-menu{
+	   width:80%;
+	   min-width:250px;
+	    float: none;
+	   position:relative;
+	   margin:auto;
+	   top:0;
+	   left:0;
+	   height:0;
+	   max-height:0;
+	   opacity:0;
+	   
+	}
+	
+	#primary-menu  li  ul.sub-menu{
+		display:block;
+		height:auto;
+		max-height:600px;
+		opacity:1;
+		transition: all .8s ease-out;		
+	}
+	#primary-menu  li  ul.sub-menu li{
+	   display:block;
+	}
+	#primary-menu ul.sub-menu li{
+	   float:none;
+	   width:100%;
+	   margin-left:0;
+	}
+/**center mpl language switcher */
+	#top-header-menu div.mlp-language-box{
+	   float:none;
+	}
+	#top-header-menu div.mlp-language-box ul{
+	   float:none;
+	   text-align:center;
+	   margin:5px 0;
+	   padding:0;
+	}
+	#top-header-menu div.mlp-language-box ul li{
+	   float:none;
+	   text-align:center;
+	   margin:0;
+	}
+	
+	/** center menu-header */
+	#header-menu{
+	    width: 100%;
+	    margin: 5px auto;
+	    float: none;
+	    text-align: center;
+	    padding: 0;
+	}
+	div.menu-header-menu-container{
+	float:none;
+	width:100%;
+	 /* display:none;*/
+	}
+	.fm-container ul{
+	   margin:0;
+	}
+  	.fm-md-6{
 		width:100%;
         margin-left:0;
        padding-left:0;
