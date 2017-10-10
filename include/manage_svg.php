@@ -27,9 +27,18 @@ add_filter( 'media_send_to_editor',  'svg_media_send_to_editor' , 20, 3 );
 
 function svg_media_send_to_editor($html, $id, $attachment)
 {
+
 	if (isset($attachment['url']) && preg_match( "/\.svg$/i", $attachment['url'])) {
-		
-		$filter = '[formater-svg src="' . $attachment['url'] .'" ][/formater-svg]';
+		$class = "";
+		if(isset( $attachment['align'])){
+			switch( $attachment['align']){
+				case 'left':
+				case 'right':
+					$class = 'class="fm-' . $attachment['align'].'"';
+					break;
+			}
+		}
+		$filter = '[formater-svg src="' . $attachment['url'] .'" ' . $class.' ][/formater-svg]';
 		return apply_filters('svg_override_send_to_editor',  $filter , $html, $id, $attachment);
 	}else{
 		return $html;
@@ -61,10 +70,10 @@ function include_file_svg( $attrs, $html='' ){
 	}
 	$doc = new DOMDocument();
 	$doc->load( $path );
-	$svg = $doc->getElementsByTagName('svg');
+	$svgs = $doc->getElementsByTagName('svg');
 	$content ='';
 
-	if( $svg->length == 0){
+	if( $svgs->length == 0){
 		return "";
 	}else{
 	    if($_formater_svg_count == 0 ){
@@ -79,7 +88,9 @@ function include_file_svg( $attrs, $html='' ){
 	    }else{
 	        $content = '<div class="formater-svg">';
 	    }
-	    $content .= $doc->saveHTML($svg->item(0)).'</div>';
+	    $svg = $svgs->item(0);
+	    $svg->setAttribute('preserveAspectRatio','xMidYMid');
+	    $content .= $doc->saveHTML($svg).'</div>';
 	    return $content;
 	}
 	
