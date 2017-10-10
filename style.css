@@ -4,7 +4,7 @@ Description: Aeris Child Theme
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.2.3
+Version: 0.2.4
 GitHub Theme URI: epointal/formater-wp-child-theme-for-aeris
 GitHub Branch: master
 */
@@ -220,17 +220,19 @@ div.menu-header-menu-container{
 }
 
 /** Manage svg */
-div.formater-svg{width:100%;position:relative;height:auto;}
+
 div.formater-svg svg{width:100%; height:auto;}
 div.formater-svg.fm-left{
 	width:50%;
 	float:left;
+	transition: width .8s ease-in-out;
 	}
 div.formater-svg.fm-right{
     width:50%;
     float:right;
+    transition: width .8s ease-in-out;
     }
-
+div.formater-svg{width:100%;position:relative;height:auto;transition: width .8s ease-in-out;}
 div.fm-enlarge::before{
 	font-family: "FontAwesome";
     content:"\f068";
