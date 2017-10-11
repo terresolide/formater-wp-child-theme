@@ -116,7 +116,7 @@ function include_file_svg( $attrs, $html='' ){
             $content .= '<div class="fm-enlarge fa" onclick="formater_switch_svg( this, '.$value.')"></div>';
 	       
 	    }else{
-	        $content = '<div class="formater-svg">';
+	        $content .= '<div class="formater-svg">';
 	    }
 	    $svg = $svgs->item(0);
 	    $svg->setAttribute('preserveAspectRatio','xMinYMin meet');
