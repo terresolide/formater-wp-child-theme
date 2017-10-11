@@ -55,12 +55,7 @@
 					if( function_exists('mlp_show_linked_elements'))
 					{
 						mlp_show_linked_elements();
-					}else{?>
-					 <div class="mlp-language-box mlp_language_box">
-					 <ul><li>
-					 <a rel="alternate" hreflang="en-US" href="https://www7.obs-mip.fr/formater-en/?noredirect=en_US">ForM@Ter EN</a>
-					 </li></ul></div>
-					<?php }?>
+					}?>
 				</nav>
 			</div>
 			

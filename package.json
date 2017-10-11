@@ -25,6 +25,9 @@
   "homepage": "https://github.com/epointal/aeris-wp-theme-formater#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-less": "^3.3.2"
+    "gulp-clean-css": "^3.9.0",
+    "gulp-less": "^3.3.2",
+    "gulp-minify": "^1.0.0"
+   // "gulp-pretty-data": "^0.2.0"
   }
 }
