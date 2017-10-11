@@ -1,5 +1,6 @@
 /**
- * 
+ * No more used
+ * @author epointal
  */
 function formater_switch_svg( node, value ){
     if( value ){

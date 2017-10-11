@@ -44,13 +44,86 @@ function svg_media_send_to_editor($html, $id, $attachment)
 		return $html;
 	}
 }
+/** 
+ * Best practice wordpress is to register script and style
+ * Not to include direct tag script or style 
+ * But it's heavy to load a js or css files for only one function 
+ * Then I give up this method
+ */
 // register svg script
-add_action( 'wp_enqueue_scripts', 'formater_register_svg_script' );
-
-function formater_register_svg_script(){
-    wp_register_script('formater_svg', get_stylesheet_directory_uri() .'/js/manage-svg.js', Array(), null, true);
+// add_action( 'wp_enqueue_scripts', 'formater_register_svg_script' );
+//
+// function formater_register_svg_script(){
+//     wp_register_script('formater_svg', get_stylesheet_directory_uri() .'/js/manage-svg.js', Array(), null, true);
+//}
+function formater_svg_script(){
+	return '<script type="text/javascript">function formater_switch_svg( node, value ){
+	    		if( value ){
+	    			var classname = "fm-right";
+	    			var float = "right";
+	    		}else{
+	    			var classname = "fm-left";
+	    			var float = "left";
+	    		}
+	    		console.log(node.parentNode);
+	    		node.parentNode.style.float = float;
+	    		if(node.parentNode.className.indexOf( classname )>=0){
+	    			node.parentNode.className = node.parentNode.className.replace(classname, "");
+	    		}else{
+	    			node.parentNode.className = node.parentNode.className + " " + classname;
+	    		}
+	    	}</script>';
 }
 
+function formater_svg_style(){
+
+	$style = '<style>div.formater-svg svg{width:100%; height:auto;}
+div.formater-svg.fm-left{
+	width:50%;
+	float:left;
+	transition: width .3s ease-in-out;
+	}
+div.formater-svg.fm-right{
+    width:50%;
+    float:right;
+    transition: width .3s ease-in-out;
+    }
+div.formater-svg{width:100%;position:relative;height:auto;transition: width .3s ease-in-out;}
+div.fm-enlarge::before{
+	font-family: "FontAwesome";
+    content:"\f066";
+}
+div.formater-svg.fm-right > div.fm-enlarge::before,
+div.formater-svg.fm-left > div.fm-enlarge::before{
+	font-family: "FontAwesome";
+	content:"\f065";
+}
+div.formater-svg div.fm-enlarge{
+	padding:3px;
+	position:absolute; 
+	top:2px;
+    right:5px;
+    z-index:2;
+    background-color: rgba(0,0,0,.2);
+    background-image: linear-gradient(hsla(0,0%,100%,.1),hsla(0,0%,100%,0));
+    border-color: rgba(0,0,0,.35) rgba(0,0,0,.4) rgba(0,0,0,.45);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.1), inset 0 0 1px rgba(0,0,0,.2), 0 1px 0 hsla(0,0%,100%,.05);
+    transition-property: background-color,border-color,box-shadow;
+    transition-duration: 10ms;
+    transition-timing-function: linear;
+    border-radius:2px;
+    cursor:pointer;}
+@media screen and (max-width: 640px){
+  div.formater-svg.fm-left,
+  div.formater-svg.fm-right{
+	  width:100%;
+  }
+  div.formater-svg div.fm-enlarge{
+	  display:none;
+  }
+}</style>';
+	return $style;
+}
 // include content  for svg file
 add_shortcode("formater-svg", "include_file_svg");
 
@@ -77,19 +150,26 @@ function include_file_svg( $attrs, $html='' ){
 		return "";
 	}else{
 	    if($_formater_svg_count == 0 ){
-	        wp_enqueue_script('formater_svg');
+	    	/**
+	    	 * Is not wordpress best practice to include tag script in html
+	    	 * but it's heavy to load a script file for only one little function
+	    	 * see before
+	    	 */
+	    	$content .= formater_svg_style();
+	    	// wp_enqueue_script('formater_svg');
+	    	$content .= formater_svg_script();
 	    }
 	    $_formater_svg_count++;
 	    if( isset( $attrs['class'] ) ){
 	        $value = $attrs['class'] == 'fm-right'? 1 : 0;
-	        $content = '<div class="formater-svg '.$attrs['class'].'"  >';
+	        $content .= '<div class="formater-svg '.$attrs['class'].'"  >';
             $content .= '<div class="fm-enlarge fa" onclick="formater_switch_svg( this, '.$value.')"></div>';
 	       
 	    }else{
 	        $content = '<div class="formater-svg">';
 	    }
 	    $svg = $svgs->item(0);
-	    $svg->setAttribute('preserveAspectRatio','xMidYMid');
+	    $svg->setAttribute('preserveAspectRatio','xMinYMin meet');
 	    $content .= $doc->saveHTML($svg).'</div>';
 	    return $content;
 	}
