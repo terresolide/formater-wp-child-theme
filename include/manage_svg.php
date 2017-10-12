@@ -110,7 +110,7 @@ function include_file_svg( $attrs, $html='' ){
 	    	$content .= formater_svg_script();
 	    }
 	    $_formater_svg_count++;
-	    if( isset( $attrs['class'] ) ){
+	    if( isset( $attrs['class'] ) && !$attrs['hide_button']){
 	        $value = $attrs['class'] == 'fm-right'? 1 : 0;
 	        $content .= '<div class="formater-svg '.$attrs['class'].'"  >';
             $content .= '<div class="fm-enlarge fa" onclick="formater_switch_svg( this, '.$value.')"></div>';
