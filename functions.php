@@ -13,21 +13,18 @@ function theme_enqueue_styles() {
  	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 
-if(!is_admin()  ){
-	//bug with media manager in backend
-	add_action( 'pre_get_posts', 'wpdf_mod_status', 1 );
-}
 
-//add private page in query for authenticated user
-function wpdf_mod_status( $query ) {
-	if(current_user_can('read_private_posts') ){
-		
-		if($query->get('post_status') == "publish" ||
-				(is_array($query->get('post_status')) && in_array( 'publish', $query->get('post_status')))){
-			$query->set('post_status', array('publish', 'private'));
-		}
+
+//delete class "tag" to body tag trouble with theme aeris style.css line 1076 ".tag a "directive 
+add_filter( 'body_class', function( $classes ) {
+	$key = array_search('tag', $classes);
+	if( $key >=0){
+		unset( $classes[$key]);
+		$classes[] = 'fm-tag';
 	}
-}
+	return $classes;
+} );
+
 
 function add_last_nav_item($items, $args) {
     // If this isn't the primary menu, do nothing

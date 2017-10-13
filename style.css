@@ -133,7 +133,7 @@ input[type="submit"]:hover {
 .tribe-events-button.tribe-inactive, .tribe-events-button:hover, 
 .tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"],
 .tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"] > a ,
-.tag a{
+ body .tag a{
    background:#8c0209;
 }
 
@@ -201,7 +201,10 @@ div.formater-partner div.wp-caption{
 	font-weight: 700;
 	border-bottom: 1px solid #eee;
 }
-
+/** team plugin */
+div.formater-partner article.post-member{
+ width:350px;
+}
 .fm-container{
   display:table-cell;
   vertical-align:top;

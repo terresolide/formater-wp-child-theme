@@ -6,6 +6,7 @@
  *  @see also inc/my-walker.php ( unset private page in menu when user can read private page)
  */
 
+
  /** add private status in query for authenticated user */
  if(!is_admin()  ){
 	//bug with media manager in backend
