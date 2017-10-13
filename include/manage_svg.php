@@ -99,7 +99,8 @@ function include_file_svg( $attrs, $html='' ){
 	if( $svgs->length == 0){
 		return "";
 	}else{
-	    if($_formater_svg_count == 0 ){
+	    if($_formater_svg_count == 0 )
+	    {
 	    	/**
 	    	 * Is not wordpress best practice to include tag script in html
 	    	 * but it's heavy to load a script file for only one little function
@@ -110,7 +111,8 @@ function include_file_svg( $attrs, $html='' ){
 	    	$content .= formater_svg_script();
 	    }
 	    $_formater_svg_count++;
-	    if( isset( $attrs['class'] ) && !$attrs['hide_button']){
+	    if( isset( $attrs['class'] ) && !isset($attrs['hide_button']))
+	    {
 	        $value = $attrs['class'] == 'fm-right'? 1 : 0;
 	        $content .= '<div class="formater-svg '.$attrs['class'].'"  >';
             $content .= '<div class="fm-enlarge fa" onclick="formater_switch_svg( this, '.$value.')"></div>';
