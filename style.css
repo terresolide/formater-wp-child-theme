@@ -29,20 +29,27 @@ main a:hover, main a:focus, main a:active{
 }
 /**
 * link list in widget side */
+.widget-area li{
+	padding-left:5px;
+	transition: padding-left .3s ease-out;
+}
 
-
-.widget-area li a:hover,
+.widget-area li:hover,
 .widget-area p.tribe-events-widget-link a:hover{
    padding-left:10px;
    transition: padding-left .3s ease-out;
 }
-
+.widget-area li:not(.type-tribe_events){
+	 color: #754a15;
+  display:table;
+}
 .widget-area li > a{
   text-decoration: none;
   color: #754a15;
-  display:table;
+  display:inline;
 }
-.widget-area li > a:before{
+
+.widget-area li:not(.type-tribe_events)::before{
    content: "\2192";
    padding: 0 5px;
    display:table-cell;
@@ -59,6 +66,28 @@ p.tribe-events-widget-link a:active,
 p.tribe-events-widget-link a:focus,
 .recentcomments a:hover{
    color: #8c0209;
+}
+/** widget area rss widget*/
+section.widget.widget_rss li {
+    width: auto;
+    margin:0px;
+    display:table;
+}
+
+h2 > a.rsswidget{
+    color: #fff;
+    text-decoration: none;
+}
+a.rsswidget:hover{
+    color: #8c0209;
+    text-decoration: none;
+}
+h2 > a.rsswidget:first-child::before{
+	font-family:"FontAwesome";
+	content:"\f09e";
+}
+h2 > a.rsswidget img{
+	display:none;
 }
 
 /** button **/
