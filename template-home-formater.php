@@ -9,6 +9,8 @@
 * 
 *  and add sidebar
 */
+
+
 get_header(); 
 
 // Description (slogan)

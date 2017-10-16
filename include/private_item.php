@@ -5,7 +5,7 @@
  *  Add private page in menu builder (appareance -> menu)
  *  @see also inc/my-walker.php ( unset private page in menu when user can read private page)
  */
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
  /** add private status in query for authenticated user */
  if(!is_admin()  ){

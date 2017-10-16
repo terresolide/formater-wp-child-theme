@@ -3,6 +3,9 @@
  * Manage svg files
  * @author epointal
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // svg count in post/page
 $_formater_svg_count = 0;
 

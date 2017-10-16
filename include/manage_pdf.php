@@ -5,6 +5,7 @@
  * @see https://github.com/epointal/formater-pdf-viewer-vjs
  * @author epointal
  */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 $_formater_pdf_count = 0;
 

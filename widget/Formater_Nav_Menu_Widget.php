@@ -4,6 +4,7 @@
 * A custom menu to manage private/publish item in widget custom menu
 * Copy of WP_Nav_Menu_Widget where add a walker on $item and replace 'nav_menu' by 'formater_menu' 
 */
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class Formater_Nav_Menu_Widget extends WP_Widget{  
 	

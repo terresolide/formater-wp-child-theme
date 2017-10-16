@@ -3,6 +3,8 @@
 * @author epointal
 *
 */
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
 
   public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
