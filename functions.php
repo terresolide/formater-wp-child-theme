@@ -1,12 +1,9 @@
-
-<?php
+<?php 
 /** 
  * ForM@Ter child theme of aeris-wordpress-theme
  * @author epointal
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
+//if ( ! defined( 'ABSPATH' ) ) exit;
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 
 function theme_enqueue_styles() {
