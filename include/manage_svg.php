@@ -25,7 +25,19 @@ function svg_upload_mimes($existing_mimes = array())
 	return $existing_mimes;
 }
 
-// Embed  svg shortcode instead of link
+/**
+ * filter for svg in media gallery
+ */
+add_filter( 'post_mime_types', 'svg_post_mime_types' );
+function svg_post_mime_types($post_mime_types)
+{
+	$post_mime_types['image/svg+xml'] = array( 'SVG','Manage SVGs', 'SVG <span class="count">(%s)</span>' );
+	return $post_mime_types;
+}
+
+/**
+ *  Embed  svg shortcode instead of link
+ */
 add_filter( 'media_send_to_editor',  'svg_media_send_to_editor' , 20, 3 );
 
 function svg_media_send_to_editor($html, $id, $attachment)
