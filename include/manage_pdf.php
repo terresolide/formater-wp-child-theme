@@ -22,6 +22,15 @@ function pdf_upload_mimes($existing_mimes = array())
 	return $existing_mimes;
 }
 
+/**
+ * filter for gpx in media gallery
+ */
+add_filter( 'post_mime_types', 'pdf_post_mime_types' );
+function pdf_post_mime_types($post_mime_types)
+{
+	$post_mime_types['application/pdf'] = array( 'PDF','Manage pdfs', 'PDF <span class="count">(%s)</span>' );
+			return $post_mime_types;
+}
 /** 
  * Register script webcomponent formater-pdf-viewer
  *  */
@@ -29,12 +38,12 @@ function pdf_upload_mimes($existing_mimes = array())
 
 if(WP_DEBUG){
 	// use master version 
-	$_formater_pdf_viewer_version = '0.1.3';
+	$_formater_pdf_viewer_version = '0.1.4';
 	$_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_".
 		                 $_formater_pdf_viewer_version.".js";
 }else{
 	// use last tag version
-	$_formater_pdf_viewer_version = '0.1.3';
+	$_formater_pdf_viewer_version = '0.1.4';
 	$_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/".$_formater_pdf_viewer_version;
 	$_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_". $_formater_pdf_viewer_version.".js";
 	
@@ -56,8 +65,12 @@ function pdf_media_send_to_editor($html, $id, $attachment)
 	
 	if (isset($attachment['url']) && preg_match( "/\.pdf$/i", $attachment['url'])) {
 		$title = $attachment['post_title'];
+		$rotate = '';
+		if( isset( $attachment['rotate'])){
+			$rotate = " rotate=".intVal( $attachment['rotate']);
+		}
 		
-		$filter = '[embed-pdf src=' . $attachment['url'] .' ]'. $title.'[/embed-pdf]';
+		$filter = '[embed-pdf src=' . $attachment['url'] . $rotate.' ]'. $title.'[/embed-pdf]';
 		//foreach($attachment as $key=>$value){
 		//	$filter .= $key.' ='.$value.'<br />';
 		//}
@@ -85,8 +98,9 @@ function embed_pdf( $attrs, $html='' ){
 	}
 
     $lang = substr(get_locale(),0,2);
+    $rotate = isset( $attrs["rotate"])? intVal( $attrs["rotate"]):0;
 	return '<div style="clear:both;"></div>
-<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'"></formater-pdf-viewer>
+<formater-pdf-viewer src="'.$url.'" fa="true" lang="'.$lang.'" rotate="'. $rotate .'" ></formater-pdf-viewer>
 <p style="text-align: center"><i class="fa fa-file-pdf-o" style="color:red;"></i> <a href="'. $url.'">'.$html.'</a></p>';
 
 	/// @todo when formater-pdf-viewer integration pk
