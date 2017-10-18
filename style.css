@@ -58,12 +58,25 @@ main a:hover, main a:focus, main a:active{
 	content:none;
 	padding:0;
 }
+/** widget upcoming events icon**/
 .tribe-events-list-widget h2.widget-title::before{
 	font-family: "FontAwesome";
 	content: "\f073";
 	margin-right:10px;
 	margin-left:5px;
 	
+}
+/** 
+*  widget Documents icon in prod : menu index is menu-2
+*  In local dev, menu index is menu-3 
+*  I ignore where you choose this identifier 
+*/
+#formater_menu-2 h2.widget-title::before,
+#formater_menu-3 h2.widget-title::before{
+	font-family: "FontAwesome";
+	content: "\f15b"; /** file icon*/
+	margin-right:10px;
+	margin-left:5px;
 }
 .widget-area li > a:hover,
 .widget-area li > a:focus,
@@ -74,6 +87,7 @@ p.tribe-events-widget-link a:focus,
 .recentcomments a:hover{
    color: #8c0209;
 }
+
 /** widget area rss widget*/
 section.widget.widget_rss li {
     width: auto;
@@ -92,6 +106,8 @@ a.rsswidget:hover{
 h2 > a.rsswidget:first-child::before{
 	font-family:"FontAwesome";
 	content:"\f09e";
+	margin-left: 5px;
+	margin-right: 5px;
 }
 h2 > a.rsswidget img{
 	display:none;

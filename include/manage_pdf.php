@@ -60,9 +60,9 @@ add_filter ( 'media_send_to_editor', 'pdf_media_send_to_editor', 21, 3 );
 function pdf_media_send_to_editor($html, $id, $attachment) {
     if (isset ( $attachment ['url'] ) && preg_match ( "/\.pdf$/i", $attachment ['url'] )) {
         $title = $attachment ['post_title'];
-        $rotate = '';
+        $rotate = ' rotate=0';
         if (isset ( $attachment ['rotate'] )) {
-            $rotate = " rotate=" . intVal ( $attachment ['rotate'] );
+            $rotate = ' rotate=' . intVal ( $attachment ['rotate'] );
         }
         
         $filter = '[embed-pdf src=' . $attachment ['url'] . $rotate . ' ]' . $title . '[/embed-pdf]';

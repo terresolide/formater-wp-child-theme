@@ -28,6 +28,7 @@ class Formater_Nav_Menu_Widget extends WP_Widget{
 			/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 			$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 			
+			
 			echo $args['before_widget'];
 			
 			if ( !empty($instance['title']) )
