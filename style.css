@@ -58,6 +58,13 @@ main a:hover, main a:focus, main a:active{
 	content:none;
 	padding:0;
 }
+.tribe-events-list-widget h2.widget-title::before{
+	font-family: "FontAwesome";
+	content: "\f073";
+	margin-right:10px;
+	margin-left:5px;
+	
+}
 .widget-area li > a:hover,
 .widget-area li > a:focus,
 .widget-area li > a:active,
@@ -89,7 +96,11 @@ h2 > a.rsswidget:first-child::before{
 h2 > a.rsswidget img{
 	display:none;
 }
-
+/** widget formater menu**/
+.widget_formater_menu > div > ul{
+	margin:0;
+	padding:0;
+}
 /** button **/
 button.menu-toggle,
 input[type="submit"] {
@@ -252,6 +263,27 @@ div.menu-header-menu-container{
 	
 }
 
+/** css to add if active feedzy-rss-feed
+ @author epointal
+add same css for input[type="url"] than
+input[type="text"] in metabox-settings in plugin feedzy-rss-feed
+input[type="url"],
+input[type="text"] {
+    height: 44px;
+    margin-left: 0px;
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    background: #fff;
+    box-shadow: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    line-height: 44px;
+    vertical-align: middle;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}*/
 /** Manage svg (direct inline) */
 
 
