@@ -69,7 +69,7 @@ main a:hover, main a:focus, main a:active{
 /** 
 *  widget Documents icon in prod : menu index is menu-2
 *  In local dev, menu index is menu-3 
-*  I ignore where you choose this identifier 
+*  I ignore where you choose this identifiergi 
 */
 #formater_menu-2 h2.widget-title::before,
 #formater_menu-3 h2.widget-title::before{
