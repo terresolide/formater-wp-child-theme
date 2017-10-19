@@ -49,7 +49,7 @@ main a:hover, main a:focus, main a:active{
   display:inline;
 }
 
-.widget-area li:not(.type-tribe_events)::before{
+.widget-area li:not(.type-tribe_events):not(.widget_sp_image)::before{
    content: "\2192";
    padding: 0 5px;
    display:table-cell;
@@ -120,7 +120,6 @@ h2 > a.rsswidget img{
 /** button **/
 button.menu-toggle,
 input[type="submit"] {
-
   margin: 0px 7px 3px 0;
   padding: 3px 12px;
   white-space: normal;
