@@ -69,6 +69,7 @@ while ( have_posts() ) : the_post();
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => '',
+				    'tribe_events_cat'  => '',
 					'orderby'          => 'date',
 					'order'            => 'DESC',
 					'include'          => '',
@@ -90,14 +91,20 @@ while ( have_posts() ) : the_post();
 				$postsList = get_posts ($argsListPost);
 
 				foreach ($postsList as $post) :
+				
   				  setup_postdata( $post );
+
 					?>
 					<div class="post-container">
 					<?php
-					get_template_part( 'template-parts/content', get_post_format() );
+					if(get_post_type() == "tribe_events"){
+					    get_template_part( 'template-parts/content', 'tribe_events' );
+					}else{
+					   get_template_part( 'template-parts/content', get_post_format() );
+					}
 					?>
 					</div>
-					<?php
+					<?php 
 				endforeach;
                
                 ?>
