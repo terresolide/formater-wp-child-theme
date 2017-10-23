@@ -2,7 +2,7 @@
 /**
  * Manage svg files
  * use vuejs webcomponent formater-pdf-viewer-vjs
- * @see https://github.com/epointal/formater-pdf-viewer-vjs
+ * @see https://github.com/terresolide/formater-pdf-viewer-vjs
  * @author epointal
  */
 if (! defined ( 'ABSPATH' ))
@@ -39,12 +39,12 @@ function pdf_post_mime_types($post_mime_types) {
 
 if (WP_DEBUG) {
     // use master version
-    $_formater_pdf_viewer_version = '0.1.4';
-    $_formater_pdf_plugin_url = "https://rawgit.com/epointal/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_" . $_formater_pdf_viewer_version . ".js";
+    $_formater_pdf_viewer_version = '0.1.5';
+    $_formater_pdf_plugin_url = "https://rawgit.com/terresolide/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_" . $_formater_pdf_viewer_version . ".js";
 } else {
     // use last tag version
-    $_formater_pdf_viewer_version = '0.1.4';
-    $_formater_pdf_plugin_url = "https://cdn.rawgit.com/epointal/formater-pdf-viewer-vjs/" . $_formater_pdf_viewer_version;
+    $_formater_pdf_viewer_version = '0.1.5';
+    $_formater_pdf_plugin_url = "https://cdn.rawgit.com/terresolide/formater-pdf-viewer-vjs/" . $_formater_pdf_viewer_version;
     $_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_" . $_formater_pdf_viewer_version . ".js";
 }
 add_action ( 'wp_enqueue_scripts', 'formater_register_pdf_script' );
