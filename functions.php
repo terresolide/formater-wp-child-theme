@@ -21,9 +21,15 @@ add_filter ( 'body_class', function ($classes) {
     }
     return $classes;
 } );
+
+/**
+ * Add search form to header menu
+ * @param string $items The HTML list content for the menu items.
+ * @param stdClass $args an object containing wp_nav_menu arguments
+ * @return html|string
+ */
 function add_last_nav_item($items, $args) {
     // If this isn't the primary menu, do nothing
-    // var_dump($args->theme_location);
     if (! ($args->theme_location == 'header-menu'))
         return $items;
     
@@ -35,13 +41,16 @@ add_filter ( 'wp_nav_menu_items', 'add_last_nav_item', 10, 2 );
 /**
  * Manage pdf files
  */
-require_once get_stylesheet_directory () . '/include/manage_pdf.php';
+if( !class_exists('Fm_pdf_manager')){
+    require_once get_stylesheet_directory () . '/include/manage_pdf.php';
+}
 
 /**
  * Manage svg files
  */
-require_once get_stylesheet_directory () . '/include/manage_svg.php';
-
+if( !class_exists('Fm_svg_manager')){
+    require_once get_stylesheet_directory () . '/include/manage_svg.php';
+}
 /**
  * Private in menu
  */
