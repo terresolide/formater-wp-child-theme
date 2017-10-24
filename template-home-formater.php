@@ -69,7 +69,6 @@ while ( have_posts() ) : the_post();
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => '',
-				    'tribe_events_cat'  => '',
 					'orderby'          => 'date',
 					'order'            => 'DESC',
 					'include'          => '',
