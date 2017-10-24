@@ -38,13 +38,100 @@ function svg_post_mime_types($post_mime_types) {
 }
 
 /**
+ * add field to svg in media manager
+ */
+// Add field "interactive" to svg in media manager
+add_filter( 'attachment_fields_to_edit', 'svg_attachment_field' , 10, 2 );
+add_filter( 'attachment_fields_to_save', 'svg_attachment_save_field' , 10, 2 );
+/**
+ * Add a field "interactive" in media manager to svg
+ * @param array $form_fields
+ * @param WP_post $post
+ * @return array
+ */
+function svg_attachment_field( $form_fields, $post )
+{
+    
+    if($post->post_mime_type == 'image/svg+xml'){
+        
+        $value = get_post_meta( $post->ID, 'fm_interactive', true );
+        
+        
+        $html = create_field_interactive( $post->ID , $value);
+        
+        $form_fields['fm_interactive'] = array(
+                'label' => 'Interactive',
+                'input' => 'html',
+                'value' => get_post_meta( $post->ID, 'fm_interactive', true),
+                'html'  => $html
+        );
+    }
+    return $form_fields;
+}
+
+/**
+ * Save interactive value for svg file
+ * @param array $post
+ * @param array $attachment
+ * @return array
+ */
+function svg_attachment_save_field( $post, $attachment){
+    
+    if(isset($attachment['fm_interactive']))
+    {
+        update_post_meta($post['ID'], 'fm_interactive', 1);
+        
+    } else if($post['post_mime_type'] == 'image/svg+xml'){
+        
+        update_post_meta($post['ID'], 'fm_interactive', 0);
+    }
+    return $post;
+}
+/**
+ * Create the checkbox for svg field interactive
+ * @param integer $post_id
+ * @param boolean|integer $value
+ * @return string
+ */
+function create_field_interactive( $post_id, $value ){
+    
+    $checked = $value ? 'checked="checked"': '';
+    
+    $html = '<input type="checkbox" name="attachments['. $post_id .'][fm_interactive]"';
+    $html .= ' id="attachments['. $post_id .'][fm_interactive]" ';
+    $html .= ' value="' .$value .'" ';
+    $html .= $checked . '  />';
+    
+    return $html;
+}
+/**
  * Embed svg shortcode instead of link
  */
 add_filter ( 'media_send_to_editor', 'svg_media_send_to_editor', 20, 3 );
+/**
+ * Return shortcode for svg instead of image
+ *
+ * @param string $html
+ *            the html string to insert in post
+ * @param integer $id
+ *            the post id
+ * @param array $attachment
+ *            the field in media gallery (url, align
+ * @return string
+ */
 function svg_media_send_to_editor($html, $id, $attachment) {
-    if (isset ( $attachment ['url'] ) && preg_match ( "/\.svg$/i", $attachment ['url'] )) {
+    
+    $interactive = false;
+    if ( ( isset( $attachment['url']) && preg_match ( "/\.svg$/i", $attachment ['url'] ))
+            || preg_match ( "/\.svg/i", $html) ){
+                $interactive = get_post_meta($id, 'fm_interactive', true);
+                
+    }
+    
+    if ( $interactive ) {
         $class = "";
-        if (isset ( $attachment ['align'] )) {
+        $url = wp_get_attachment_image_src( $id )[0];
+        if ( isset ( $attachment ['align'] )) {
             switch ($attachment ['align']) {
                 case 'left' :
                 case 'right' :
@@ -52,7 +139,7 @@ function svg_media_send_to_editor($html, $id, $attachment) {
                     break;
             }
         }
-        $filter = '[formater-svg src="' . $attachment ['url'] . '" ' . $class . ' ][/formater-svg]';
+        $filter = '[formater-svg src="' . $url . '" ' . $class . ' ][/formater-svg]';
         return apply_filters ( 'svg_override_send_to_editor', $filter, $html, $id, $attachment );
     } else {
         return $html;
