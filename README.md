@@ -1,4 +1,4 @@
-# formater-wp-child-theme-for-aeris
+# formater-wp-child-theme 2
 Child theme for [Aeris Wordpress Theme](https://github.com/aeris-data/aeris-wordpress-theme)
 
 ![Screenshot home page](https://github.com/terresolide/formater-wp-child-theme-for-aeris/blob/master/screenshot.png)
