@@ -58,6 +58,22 @@ main a:hover, main a:focus, main a:active{
 	content:none;
 	padding:0;
 }
+/** footer widget area **/
+[id="page"] > footer [id="partners-sidebar"]{
+	text-align:center;
+}
+#partners-sidebar  li::before{
+	content:none;
+	padding:0;
+	display:table-cell;
+}
+#menu-bottom{
+	margin-right:60px;
+}
+#menu-bottom  li::before{
+	content:none;
+	padding:0;
+}
 /** widget upcoming events icon**/
 .tribe-events-list-widget h2.widget-title::before{
 	font-family: "FontAwesome";
