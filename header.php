@@ -16,6 +16,7 @@
 </head>
 
 <body <?php body_class(); ?> data-color="<?php echo get_theme_mod( 'theme_aeris_main_color' );?>">
+<a href="#" class="formater-button-up fa fa-chevron-up"></a>
 <div id="page" class="site"> 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'theme-aeris' ); ?></a>
 

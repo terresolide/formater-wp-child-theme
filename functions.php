@@ -12,6 +12,33 @@ function theme_enqueue_styles() {
     wp_enqueue_style ( 'parent-style', get_template_directory_uri () . '/style.css' );
 }
 
+// Add little script in bottom for formater-bottom-up
+/*load the js file into the footer*/
+function add_script_button_up()
+{
+   
+        ?>
+     <script type="text/javascript">
+       function formater_button_up(){
+    	   var formater_button_up = document.querySelector(".formater-button-up");
+           if( formater_button_up){
+               if( window.scrollY == 0 ){
+               	   formater_button_up.style.opacity = 0;
+               }else{
+                   formater_button_up.style.opacity = 0.6;
+               }
+           }
+       }
+        window.addEventListener("scroll", function(){
+        	    formater_button_up();
+        });
+        formater_button_up();
+     </script>
+  <?php
+
+ }
+  add_action( 'wp_footer', 'add_script_button_up' );
+
 // delete class "tag" to body tag trouble with theme aeris style.css line 1076 ".tag a "directive
 add_filter ( 'body_class', function ($classes) {
     $key = array_search ( 'tag', $classes );
