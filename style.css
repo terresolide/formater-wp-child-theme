@@ -70,12 +70,22 @@ main a:hover, main a:focus, main a:active{
 	padding:0;
 	display:table-cell;
 }
-#menu-bottom{
-	margin-right:60px;
-}
+
 #menu-bottom  li::before{
 	content:none;
 	padding:0;
+	color: #fff;
+}
+#menu-bottom  li a{
+	color:#fff;
+}
+#menu-bottom  li a:hover{
+	color:#8c0209;
+}
+.legal-notices::after{
+	content:"   |";
+	padding: 0 20px;
+	color: #000;
 }
 /** widget upcoming events icon**/
 .tribe-events-list-widget h2.widget-title::before{
@@ -354,7 +364,7 @@ a.formater-button-up:hover{
 
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 599px){
 
 	/** menu */
 	header div.wrapper{
