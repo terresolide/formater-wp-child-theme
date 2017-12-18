@@ -101,11 +101,25 @@ main a:hover, main a:focus, main a:active{
 *  I ignore where you choose this identifiergi 
 */
 #formater_menu-2 h2.widget-title::before,
-#formater_menu-3 h2.widget-title::before{
+#formater_menu-3 h2.widget-title::before,
+#formater_menu-4 h2.widget-title::before,
+.widget-do-etfw h2.widget-title::before{
 	font-family: "FontAwesome";
-	content: "\f15b"; /** file icon*/
 	margin-right:10px;
 	margin-left:5px;
+}
+#formater_menu-2 h2.widget-title::before {
+	content: "\f15b"; /** file icon*/
+}
+#formater_menu-3 h2.widget-title::before {
+	content:"\f0ac";
+}
+#formater_menu-4 h2.widget-title::before{
+	content:"\f0da";
+}
+/** twitter */
+.widget-do-etfw h2.widget-title::before{
+	content:"\f099";
 }
 .widget-area li > a:hover,
 .widget-area li > a:focus,
