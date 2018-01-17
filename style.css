@@ -4,7 +4,7 @@ Description: Aeris Child Theme
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.3.5
+Version: 0.3.6
 GitHub Theme URI: terresolide/formater-wp-child-theme
 GitHub Branch: master
 */
@@ -355,6 +355,41 @@ a.formater-button-up:hover, a.formater-button-up:focus, a.formater-button-up:act
 }
 a.formater-button-up:hover{
 	opacity:0.9;
+}
+
+/** trouble with aeris icon**/
+.widget_recent_entries h2::before{
+	font-family:"FontAwesome";
+	content:"\f028";
+	
+}
+.icon-clock::before{
+	font-family:"FontAwesome";
+	content:"\f017";
+}
+.icon-user::before{
+	font-family:"FontAwesome";
+	content:"\f007";
+}
+.nav-previous a::before{
+	font-family:"FontAwesome";
+	content:"\f137";
+}
+.nav-next a::after{
+	font-family:"FontAwesome";
+	content:"\f138";
+}
+.post-edit-link::before {
+	font-family:"FontAwesome";
+    content: '\f044';
+}
+.icon-angle-right::before {
+	font-family:"FontAwesome";
+    content: '\f054';
+}
+.icon-link::before {
+	font-family:"FontAwesome";
+    content: '\f0c1';
 }
 @media screen and (max-width: 765px){   
 		/** button up*/
