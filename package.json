@@ -1,6 +1,6 @@
 {
   "name": "aeris-wp-theme-formater",
-  "version": "0.1.0",
+  "version": "0.3.7",
   "description": "Child Theme  for ForM@Ter site",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-less": "^3.3.2",
-    "gulp-minify": "^1.0.0"
-   // "gulp-pretty-data": "^0.2.0"
+    "gulp-minify": "^1.0.0",
+    "gulp-pretty-data": "^0.1.2"
   }
 }
