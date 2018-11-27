@@ -37,16 +37,12 @@ function pdf_post_mime_types($post_mime_types) {
  * Register script webcomponent formater-pdf-viewer
  */
 
-if (WP_DEBUG) {
-    // use master version
-    $_formater_pdf_viewer_version = '0.1.5';
-    $_formater_pdf_plugin_url = "https://rawgit.com/terresolide/formater-pdf-viewer-vjs/master/dist/formater-pdf-viewer-vjs_" . $_formater_pdf_viewer_version . ".js";
-} else {
+
     // use last tag version
-    $_formater_pdf_viewer_version = '0.1.5';
-    $_formater_pdf_plugin_url = "https://cdn.rawgit.com/terresolide/formater-pdf-viewer-vjs/" . $_formater_pdf_viewer_version;
-    $_formater_pdf_plugin_url .= "/dist/formater-pdf-viewer-vjs_" . $_formater_pdf_viewer_version . ".js";
-}
+    $_formater_pdf_viewer_version = '0.1.7';
+    $_formater_pdf_plugin_url = "https://api.poleterresolide.fr/webcomponents/formater-pdf-viewer-vjs_";
+    $_formater_pdf_plugin_url .= $_formater_pdf_viewer_version . ".js";
+
 add_action ( 'wp_enqueue_scripts', 'formater_register_pdf_script' );
 function formater_register_pdf_script() {
     global $_formater_pdf_plugin_url;
