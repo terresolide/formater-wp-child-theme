@@ -3,8 +3,22 @@
  * ForM@Ter child theme of aeris-wordpress-theme
  * @author epointal
  */
+function theme_formater_setup() {
+	add_theme_support( 'post-thumbnails', array( 'tribe_events') );
+}
 
+ add_action( 'after_setup_theme', 'theme_formater_setup' );
 
+function allow_script_tags( $allowedposttags ){
+	$allowedposttags['script'] = array(
+			'src' => true,
+			'height' => true,
+			'width' => true,
+	);
+	return $allowedposttags;
+}
+
+add_filter('wp_kses_allowed_html','allow_script_tags', 1);
 
 // if ( ! defined( 'ABSPATH' ) ) exit;
 add_action ( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
