@@ -65,7 +65,7 @@ while ( have_posts() ) : the_post();
                 // list_pages($argsListPost, false);
 				global $post;
 				$argsListPost = array(
-					'posts_per_page'   => get_option('posts_per_page') - 3,
+					'posts_per_page'   => get_option('posts_per_page') ,
 					'offset'           => 0,
 					'category'         => '',
 					'category_name'    => '',
