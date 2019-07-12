@@ -4,7 +4,7 @@ Description: Aeris Child Theme
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.4.1
+Version: 0.4.2
 GitHub Theme URI: terresolide/formater-wp-child-theme
 GitHub Branch: master
 */
@@ -19,6 +19,7 @@ input[type="submit"] {
 CSS FORMATER
 */
 /** color of link */
+/** color wordpress**/
 a:hover,
 a:focus,
 a:active {
@@ -35,6 +36,7 @@ a:active {
 }
 .widget ul {
   margin: 0;
+  padding: 0;
 }
 .widget-area li {
   padding-left: 5px;
@@ -49,8 +51,6 @@ a:active {
   color: #754a15;
   display: table;
 }
-/* @color: #8c0209;
-@color: #9B1D14;*/
 .widget-area li > a {
   text-decoration: none;
   color: #754a15;
@@ -93,25 +93,33 @@ a:active {
   padding: 0 20px;
   color: #000;
 }
-/** widget upcoming events icon**/
-.tribe-events-list-widget h2.widget-title::before {
-  font-family: "FontAwesome";
-  content: "\f073";
-  margin-right: 10px;
-  margin-left: 5px;
-}
 /** 
 *  widget Documents icon in prod : menu index is menu-2
 *  In local dev, menu index is menu-3 
-*  I ignore where you choose this identifiergi 
+*  I ignore where to choose this identifier
+*  .tribe-events-list-widget: events
+*  #formater_menu-2 : custom menu for Documents in prod
+*  #formater_menu-3 : custom menu for Old portal
+*  #formater_menu-4:  unused
+*  #custom_html-2: Data Terra Poles
+*  #custom_html-3: follow ForM@Ter
+*  .widget-do-etfw : twitter (useless, title is empty)
+*  #archives-2: monthly archives
 */
+.tribe-events-list-widget h2.widget-title::before,
 #formater_menu-2 h2.widget-title::before,
 #formater_menu-3 h2.widget-title::before,
 #formater_menu-4 h2.widget-title::before,
-.widget-do-etfw h2.widget-title::before {
+.widget-do-etfw h2.widget-title::before,
+#custom_html-3 h2.widget-title::before,
+#archives-2 h2.widget-title::before {
   font-family: "FontAwesome";
   margin-right: 10px;
   margin-left: 5px;
+}
+/** widget upcoming events icon**/
+.tribe-events-list-widget h2.widget-title::before {
+  content: "\f073";
 }
 #formater_menu-2 h2.widget-title::before {
   content: "\f15b";
@@ -123,9 +131,24 @@ a:active {
 #formater_menu-4 h2.widget-title::before {
   content: "\f0da";
 }
-/** twitter */
+/** custom html follow formater */
+#custom_html-3 h2.widget-title::before {
+  content: "\f064";
+}
+/** monthly archive */
+#archives-2 h2.widget-title::before {
+  content: "\f187";
+}
+/** twitter (does not exist anymore)*/
 .widget-do-etfw h2.widget-title::before {
   content: "\f099";
+}
+#custom_html-3 img.follow:hover {
+  max-width: 61px;
+  min-width: 61px;
+}
+#custom_html-3 a:focus {
+  outline: 0;
 }
 .widget-area li > a:hover,
 .widget-area li > a:focus,
@@ -163,6 +186,32 @@ h2 > a.rsswidget img {
 .widget_formater_menu > div > ul {
   margin: 0;
   padding: 0;
+}
+/** select in widget aside **/
+select[name="archive-dropdown"] {
+  border: 0;
+  border-radius: 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* background-color: rgb(248, 235, 218);*/
+  background-color: #f8ead8;
+  margin-left: 10px;
+  width: 250px;
+  padding: .5em 2.5em .5em .5em;
+}
+select[name="archive-dropdown"]:hover {
+  cursor: pointer;
+}
+#archives-2::after {
+  font-family: "FontAwesome";
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -0.5em;
 }
 /** button **/
 button.menu-toggle,
@@ -207,6 +256,9 @@ input[type="submit"]:hover {
 .tribe-events-calendar td.tribe-events-present div[id*="tribe-events-daynum-"] > a,
 body .tag a {
   background: #8c0209;
+  color: white;
+}
+.link-white:hover {
   color: white;
 }
 /** custom event calendar for differents events categories*/
@@ -389,11 +441,11 @@ ul[id="header-menu"] > :last-child {
 }
 .wrapper-content h3 {
   border-bottom: none;
-  color: #dd9946;
+  color: #DD9946;
   font-weight: 900;
 }
 .wrapper-content h3 > a {
-  color: #dd9946;
+  color: #DD9946;
 }
 /** TEMPORAIRE le temps de le passer dans theme ou composant*/
 .page-template-template-catalogue [id="masterhead"] {
@@ -439,7 +491,7 @@ div.isgi-component {
 .formater-title {
   font-size: 1.8rem;
   border: none;
-  color: #dd9946;
+  color: #DD9946;
   margin-bottom: 40px;
 }
 /** customize aeris-team plugin **/
@@ -454,7 +506,7 @@ input[id^="aeris_team_manager_member_info"]:checked ~ header a,
   border: none;
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: #dd9946;
+  text-decoration-color: #DD9946;
 }
 @media screen and (max-width: 765px) {
   /** button up*/
