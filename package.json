@@ -1,6 +1,6 @@
 {
   "name": "aeris-wp-theme-formater",
-  "version": "0.3.7",
+  "version": "0.5.0",
   "description": "Child Theme  for ForM@Ter site",
   "main": "index.js",
   "scripts": {

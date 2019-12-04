@@ -4,7 +4,7 @@ Description: Aeris Child Theme
 Author: epointal
 Author URI: http://elisabeth.pointal.org
 Template: aeris-wordpress-theme 
-Version: 0.4.2
+Version: 0.5.0
 GitHub Theme URI: terresolide/formater-wp-child-theme
 GitHub Branch: master
 */
@@ -24,12 +24,18 @@ CSS FORMATER
 
 /** color wordpress**/
 @color: #DD9946;
+@textgrey: #555;
 a:hover, a:focus, a:active {
     color: @red;
 }
 /**
 * link list in widget side */
-
+.widget-area h2.widget-title{
+  background:none;
+  color: @textgrey;
+  font-weight:500;
+  border-bottom: 2px solid @color;
+}
 .post-excerpt,
 .post-excerpt p{
 	line-height:1.3;
@@ -53,13 +59,13 @@ a:hover, a:focus, a:active {
    transition: padding-left .3s ease-out;
 }
 .widget-area li:not(.type-tribe_events){
-	color: @braun;
+	color: @textgrey;
   display:table;
 }
 
 .widget-area li > a{
 	text-decoration:none;
-	color: @braun;
+	color: @textgrey;
 	display:inline;
 }
 
@@ -133,6 +139,15 @@ a:hover, a:focus, a:active {
 .tribe-events-list-widget h2.widget-title::before{
 	content: "\f073";	
 }
+
+.widget-area .tribe-events-widget-link a::before {
+    content: "\2192";
+    padding: 0 5px;
+    display: table-cell;
+}
+.tribe-events-widget-link a {
+  color: @textgrey;
+}
 #formater_menu-2 h2.widget-title::before {
 	content: "\f15b"; /** file icon*/
 }
@@ -180,7 +195,7 @@ section.widget.widget_rss li {
 }
 
 h2 > a.rsswidget{
-    color: #fff;
+    color: @textgrey;
     text-decoration: none;
 }
 a.rsswidget:hover{
@@ -302,15 +317,21 @@ table.tribe-events-calendar .tribe_events a,
 }
 li.tribe-events-list-widget-events{
 	text-align:center;
-	background:@red;
-	color:#fff;
+	/*background:@red;
+	color:#fff;*/
+  color: @textgrey;
+  border: 1px solid #ccc;
 }
 li.tribe-events-list-widget-events a,
 li.tribe-events-list-widget-events a:hover,
 li.tribe-events-list-widget-events a:focus,
 li.tribe-events-list-widget-events a:active{
  	font-size:1.2rem;
-	color:#fff;
+	/*color:#fff;*/
+  color: @textgrey;
+}
+li.tribe-events-list-widget-events a:hover{
+  color: @red;
 }
 #tribe-events-content .tribe-events-tooltip h4.entry-title{
 	color: @color;
