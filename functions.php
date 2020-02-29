@@ -71,11 +71,17 @@ add_filter ( 'body_class', function ($classes) {
  */
 function add_last_nav_item($items, $args) {
     // If this isn't the primary menu, do nothing
-    if (! ($args->theme_location == 'header-menu'))
+    if (! ($args->theme_location == 'header-menu')) {
         return $items;
-    
-    return $items . '<li>' . get_search_form ( false ) . '</li>';
-    // return $items;
+    }
+    $items .= '<li>' . get_search_form ( false ) . '</li>';
+    if ( is_user_logged_in() ) {
+        $items .= '<li><a href="' . wp_logout_url() . '"><i class="fa fa-sign-out"></i> ' . __( 'Log Out' ) . '</a></li>';
+    } else {
+        $items .= '<li><a href="' . wp_login_url() . '"><i class="fa fa-sign-in"></i> ' . __( 'Log In' ) . '</a></li>';
+        // $items .= '<li><a href="' . wp_registration_url() . '">' . __( 'Sign Up' ) . '</a></li>';
+    };
+    return $items;
 }
 
 add_filter ( 'wp_nav_menu_items', 'add_last_nav_item', 10, 2 );
